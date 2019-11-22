@@ -1,0 +1,3 @@
+! Color scheme
+#include ".Xresources.d/gruvbox-dark.xresources"
+! #include ".Xresources.d/solarized-dark.xresources"
