@@ -16,7 +16,7 @@ log() {
 }
 
 install_deps() {
-  sudo apt update && sudo apt install build-essential procps curl file git
+  sudo apt update && sudo apt install -y build-essential procps curl file git
 }
 
 main() {
@@ -30,7 +30,7 @@ main() {
   done
 
   # install homebrew
-  /bin/bash -c "NONINTERACTIVE=1 $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  command -v brew >/dev/null 2>&1 || /bin/bash -c "NONINTERACTIVE=1 $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # enable homebrew for this shell
   export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
