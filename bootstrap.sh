@@ -5,7 +5,7 @@ set -eu pipefail
 USER_BIN="$HOME/.local/bin"
 
 abort() {
-  printf "ERROR: $s\n" "$@" >&2
+  printf "ERROR: %s\n" "$@" >&2
 }
 
 log() {
