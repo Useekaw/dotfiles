@@ -19,7 +19,7 @@ install_brew() {
 }
 
 main() {
-  for program in wget gunzip tar command chmod rm printf mv mkdir; do
+  for program in git wget gunzip tar command chmod rm printf mv mkdir; do
     command -v "$program" >/dev/null 2>&1 || {
       echo "Not found: $program"
       abort "Missing dependencies." 
