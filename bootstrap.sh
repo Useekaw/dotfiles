@@ -32,9 +32,10 @@ main() {
   # install homebrew
   command -v brew >/dev/null 2>&1 || /bin/bash -c "NONINTERACTIVE=1 $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # enable homebrew for this shell
-  export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   brew analytics off
+  # add brew to default bashrc to have it always available (even though we are using zsh)
+  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.bashrc"
 
   # install initial tools
   brew install age
