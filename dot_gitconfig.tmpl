@@ -1,0 +1,14 @@
+[init]
+  defaultBranch = main
+
+[user]
+{{- if .isWorkPC }}
+  name = {{ (include ".git_work_name.age") | decrypt }}
+  email = {{ (include ".git_work_email.age") | decrypt }}
+{{- else }}
+  name = {{ (include ".git_personal_name.age") | decrypt }}
+  email = {{ (include ".git_personal_email.age") | decrypt }}
+{{- end }}
+
+[fetch]
+  prune = true
