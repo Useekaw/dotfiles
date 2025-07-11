@@ -1,6 +1,5 @@
-{{ if .isWorkPC -}}
-{{ (include ".secrets/id_ed25519_work.age") | decrypt | quote }}
+{{- if .isWorkPC }}
+{{- (include ".secrets/id_ed25519_work.age") | decrypt -}}
 {{ else }}
-{{ (include ".secrets/id_ed25519_personal.age") | decrypt | quote }}
-{{ end }}
-
+{{- (include ".secrets/id_ed25519_personal.age") | decrypt -}}
+{{ end -}}
