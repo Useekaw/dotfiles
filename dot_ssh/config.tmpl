@@ -1,0 +1,7 @@
+Host *
+  AddKeysToAgent yes
+  PreferredAuthentications publickey
+  IdentitiesOnly yes
+  IdentityFile {{ .homeDir }}/.ssh/id_ed25519
+
+
