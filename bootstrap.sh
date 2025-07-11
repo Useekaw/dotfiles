@@ -15,11 +15,19 @@ log() {
   printf "################################################################################\n"
 }
 
+make_dirs() {
+  mkdir -p "$HOME/.local/share"
+  mkdir -p "$HOME/.config"
+  mkdir -p "$HOME/.local/state"
+  mkdir -p "$HOME/.cache"
+}
+
 install_deps() {
-  sudo apt update && sudo apt install -y build-essential procps curl file git
+  sudo apt update && sudo apt install -y build-essential procps curl file git zsh
 }
 
 main() {
+  make_dirs
   install_deps
 
   for program in wget gunzip tar command chmod rm printf mv mkdir; do
@@ -44,7 +52,21 @@ main() {
   # initiate chezmoi
   chezmoi init --apply Useekaw
 
-  log "Dotfiles configured!"
+  # install managed tools
+  brew bundle
+
+  # update shell if necessary
+  if [[ "$(basename "$SHELL")" != "zsh" ]]; then
+    if command -v zsh &> /dev/null; then
+        chsh -s "$(command -v zsh)"
+        log "chsh command executed. Please log out and log back in for the changes to take effect."
+    else
+        abort "zsh is not installed. Cannot change shell."
+    fi
+  else
+    log "Dotfiles configured!"
+  fi
+
 }
 
 main
