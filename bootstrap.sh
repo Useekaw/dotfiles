@@ -53,7 +53,7 @@ main() {
   chezmoi init --apply Useekaw
 
   # install managed tools
-  brew bundle
+  brew bundle --file "${HOME}/.brewfile" --verbose
 
   # update shell if necessary
   if [[ "$(basename "$SHELL")" != "zsh" ]]; then
