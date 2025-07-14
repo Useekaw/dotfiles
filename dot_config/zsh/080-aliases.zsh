@@ -8,6 +8,7 @@ alias vim='nvim'
 alias tg='terragrunt'
 alias terraform='tofu'
 alias cat='bat --plain'
+alias lg='lazygit'
 
 # navigation
 alias ..='cd ..'
