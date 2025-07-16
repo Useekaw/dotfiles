@@ -13,6 +13,10 @@ export PATH="${HOME}/.local/bin:${PATH}"
 [[ -z "${XDG_DATA_DIRS}" ]] && export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 [[ -z "${XDG_CONFIG_DIRS}" ]] && export XDG_CONFIG_DIRS="/etc/xdg"
 
+# fixes issue with brew and node (unable to find certificates )
+# this way node can always use the ones provided by the system
+export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+
 # Import other exports
 if [ -d "${XDG_CONFIG_HOME}/exports" ] ; then
   for f in $(find "${XDG_CONFIG_HOME}/exports/" -type f,l 2> /dev/null); do
