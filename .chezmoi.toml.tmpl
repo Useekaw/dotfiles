@@ -1,11 +1,17 @@
-{{- $isWorkPC := promptBoolOnce . "isWorkPC" "Is this the work computer? (true/false)" -}}
+{{- $is_work := promptBoolOnce . "is_work" "Is this a work machine?" -}}
+{{- $is_desktop := promptBoolOnce . "is_desktop" "Is this a desktop machine?" -}}
 
 encryption = "age"
 
 [age]
   identity = "~/.secrets/age_chezmoi.key"
+{{- if $is_work }}
+  recipient = "..."
+{{- else }}
   recipient = "age12a6572xj0gcg5k4j8z0nzgmqyhwkn3tf3ly0jftzhlugj82t6uashywa0t"
+{{- end }}
 
 [data]
-  isWorkPC = {{ $isWorkPC }}
+  is_work = {{ $is_work }}
+  is_desktop = {{ $is_desktop }}
 

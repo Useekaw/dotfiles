@@ -1,2 +1,1 @@
 for file in "${XDG_CONFIG_HOME}/zsh"/*.zsh(N.); source $file
-

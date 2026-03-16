@@ -2,7 +2,7 @@
   defaultBranch = main
 
 [user]
-{{- if .isWorkPC }}
+{{- if .is_work }}
   name = {{ (include ".git_work_name.age") | decrypt }}
   email = {{ (include ".git_work_email.age") | decrypt }}
 {{- else }}

@@ -1,6 +1,6 @@
 # dotfiles
 
-My dotfiles for Linux (Debian).
+My dotfiles for Linux (pacman/dnf/apt).
 
 ## Bootstrap
 

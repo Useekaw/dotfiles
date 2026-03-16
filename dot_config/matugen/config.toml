@@ -1,0 +1,6 @@
+[config]
+
+[templates.yazi]
+input_path = "~/.config/matugen/templates/yazi.toml"
+output_path = "~/.config/yazi/theme.toml"
+

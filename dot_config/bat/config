@@ -1,0 +1,5 @@
+# Set the theme
+--theme="gruvbox-material-hard-dark"
+
+# Use plain style
+--style="plain"

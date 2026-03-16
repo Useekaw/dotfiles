@@ -1,5 +1,4 @@
 brew "age"
-brew "awscli"
 brew "bat"
 brew "chezmoi"
 brew "direnv"
@@ -18,8 +17,14 @@ brew "ripgrep"
 brew "sops"
 brew "yazi"
 
-{{- if .isWorkPC }}
+brew tap go-task/tap
+brew install go-task
+
+{{- if .is_work }}
+brew "awscli"
 {{- else }}
+brew tap hougesen/tap
+brew install kdlfmt
 {{- end }}
 
 

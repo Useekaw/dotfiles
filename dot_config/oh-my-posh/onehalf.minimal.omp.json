@@ -28,25 +28,23 @@
         {
           "foreground": "p:blue",
           "style": "plain",
-          "properties": {
+          "options": {
             "style": "full"
           },
           "template": "{{ .Path }} ",
           "type": "path"
         },
         {
-          "properties": {
+          "options": {
             "branch_icon": "",
-            "fetch_status": true,
-            "fetch_stash_count": true,
-            "fetch_worktree_count": true
+            "fetch_status": true
           },
           "style": "plain",
           "template": "({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:green>{{ .HEAD }}</>{{ end }}{{ if (gt .Ahead 0)}}<p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if (gt .Behind 0)}}<p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }}) ",
           "type": "git"
         },
         {
-          "properties": {
+          "options": {
             "cache_duration": "none"
           },
           "template": "[{{ if .Error }}<p:red>{{ .Error }}</>{{ else }}{{ if .Venv }}{{ .Venv }}{{ end }} {{ .Full }}{{ end }}] ",
@@ -62,7 +60,7 @@
       "segments": [
         {
           "foreground": "p:foreground",
-          "properties": {
+          "options": {
             "always_enabled": true
           },
           "style": "plain",

@@ -1,0 +1,118 @@
+{
+    "workbench.colorTheme": "Dynamic Base16 DankShell",
+    "workbench.startupEditor": "none",
+    "window.menuBarVisibility": "compact",
+    "colorize.enable_search_variables": false,
+    "colorize.languages": [
+        "json",
+        "css",
+        "sass",
+        "scss",
+        "less",
+        "postcss",
+        "sss",
+        "stylus",
+        "xml",
+        "svg"
+    ],
+    "editor.allowVariableFonts": false,
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', monospace",
+    "editor.minimap.enabled": false,
+    "workbench.editor.empty.hint": "hidden",
+    "customLocalFormatters.formatters": [
+        {
+            "command": "/home/linuxbrew/.linuxbrew/bin/kdlfmt format -",
+            "languages": [
+                "kdl"
+            ]
+        }
+    ],
+    "[json, jsonc, markdown, KDL]": {
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+    "telemetry.telemetryLevel": "off",
+    "telemetry.feedback.enabled": false,
+    "telemetry.editStats.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.iconTheme": "gruvbox-material-icons",
+    "gruvbox-material-icons.folders.theme": "colorful",
+    "taskfile": {
+        "path": "/home/linuxbrew/.linuxbrew/bin/task"
+    },
+    "mise.binPath": "/home/linuxbrew/.linuxbrew/bin/mise",
+    "mise.configureExtensionsAutomatically": true,
+    "explorer.confirmDelete": false,
+    "ansible.lightspeed.enabled": false,
+    "ansible.lightspeed.suggestions.enabled": false,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "lineBreakInsert"
+            ],
+            "silent": true
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    // To improve performance
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "mise.checkForNewMiseVersion": false
+}
