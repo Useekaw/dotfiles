@@ -30,6 +30,7 @@ install_deps() {
     sudo apt update && sudo apt install -y build-essential procps curl file git zsh wget gzip tar
   else
     abort "No supported package manager found (pacman, dnf, apt)."
+  fi
 }
 
 main() {
