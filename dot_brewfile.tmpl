@@ -17,14 +17,17 @@ brew "ripgrep"
 brew "sops"
 brew "yazi"
 
-brew tap go-task/tap
-brew install go-task
+tap "go-task/tap"
+brew "go-task/tap/go-task"
 
 {{- if .is_work }}
 brew "awscli"
+brew "pipx"
+brew "uv"
+cask "copilot-cli"
 {{- else }}
-brew tap hougesen/tap
-brew install kdlfmt
+tap "hougesen/tap"
+brew "hougesen/tap/kdlfmt"
 {{- end }}
 
 
