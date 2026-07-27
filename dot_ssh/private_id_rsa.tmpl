@@ -1,4 +1,6 @@
-{{- if not .is_work -}}
-{{ (include ".secrets/id_rsa.age") | decrypt }}
+{{- if .is_work -}}
+{{ (include ".secrets/id_rsa_work.age") | decrypt }}
+{{- else -}}
+{{ (include ".secrets/id_rsa_personal.age") | decrypt }}
 {{- end }}
 
