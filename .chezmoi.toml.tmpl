@@ -1,5 +1,6 @@
 {{- $is_work := promptBoolOnce . "is_work" "Is this a work machine?" -}}
-{{- $is_desktop := promptBoolOnce . "is_desktop" "Is this a desktop machine?" -}}
+{{- $is_wsl := contains "microsoft" (.chezmoi.kernel.osrelease | lower) -}}
+{{- $is_desktop := and (promptBoolOnce . "is_desktop" "Is this a desktop machine?") (not $is_wsl) -}}
 
 encryption = "age"
 
@@ -14,4 +15,5 @@ encryption = "age"
 [data]
   is_work = {{ $is_work }}
   is_desktop = {{ $is_desktop }}
+  is_wsl = {{ $is_wsl }}
 
