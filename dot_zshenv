@@ -5,6 +5,10 @@ export EDITOR=nvim
 # PATH
 export PATH="${HOME}/.local/bin:${PATH}"
 
+# Activate ssh-agent
+eval "$(ssh-agent -s)" > /dev/null 2>&1
+ssh-add "${HOME}/.ssh/id_ed25519" > /dev/null 2>&1
+
 # some dir defaults. see https://specifications.freedesktop.org/basedir-spec/latest/
 [[ -z "${XDG_DATA_HOME}" ]] && export XDG_DATA_HOME="${HOME}/.local/share"
 [[ -z "${XDG_CONFIG_HOME}" ]] && export XDG_CONFIG_HOME="${HOME}/.config"
