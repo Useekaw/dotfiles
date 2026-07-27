@@ -1,3 +1,22 @@
+Host bitbucket.bah.local
+  User git
+  PreferredAuthentications publickey
+
+Host *.bah.local
+  User hafa
+  # Force password/keyboard-interactive and disable keys & GSSAPI
+  PreferredAuthentications password,keyboard-interactive
+  PubkeyAuthentication no
+  PasswordAuthentication yes
+  KbdInteractiveAuthentication yes
+  GSSAPIAuthentication no
+
+  # Optional quality-of-life settings
+  ServerAliveInterval 30
+  ServerAliveCountMax 6
+  StrictHostKeyChecking accept-new   # or "yes" in stricter envs
+  UserKnownHostsFile ~/.ssh/known_hosts
+
 Host *
   AddKeysToAgent yes
   PreferredAuthentications publickey
@@ -10,4 +29,3 @@ Host *
 Host ghost
   IdentityFile ~/.ssh/id_ed25519
 {{- end }}
-
