@@ -24,6 +24,11 @@ styles
 .config/Code - OSS
 {{- end }}
 
+# wslview shim is only needed inside WSL (opens links via the Windows browser)
+{{- if not .is_wsl }}
+.local/bin/wslview
+{{- end }}
+
 # Ignore generated (more or less) files in the .ssh directory
 .ssh/authorized_keys
 .ssh/known_hosts
