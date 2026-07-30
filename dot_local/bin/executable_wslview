@@ -1,0 +1,4 @@
+#!/bin/sh
+# Minimal wslview replacement: opens a URL/path in the Windows default browser via cmd.exe
+# (wslu is not packaged for Debian, so we can't just install wslview from apt)
+exec /mnt/c/WINDOWS/system32/cmd.exe /c start "" "$1" >/dev/null 2>&1

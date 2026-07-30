@@ -20,3 +20,8 @@ ssh-add "${HOME}/.ssh/id_ed25519" > /dev/null 2>&1
 # fixes issue with brew and node (unable to find certificates )
 # this way node can always use the ones provided by the system
 export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+{{- if .is_wsl }}
+
+# open links via Windows default browser (needed e.g. for MCP/OAuth flows in WSL)
+export BROWSER=wslview
+{{- end }}
