@@ -1,0 +1,8 @@
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/Useekaw/nvim.git"
+    refreshPeriod = "168h"
+    [".config/nvim".clone]
+        args = ["--branch", "personal"]
+    [".config/nvim".pull]
+        args = ["--ff-only"]
