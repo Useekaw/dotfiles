@@ -1,4 +1,15 @@
 #!/bin/sh
-# Minimal wslview replacement: opens a URL/path in the Windows default browser via cmd.exe
+# Minimal wslview replacement: opens a URL/path in the Windows default browser.
 # (wslu is not packaged for Debian, so we can't just install wslview from apt)
-exec /mnt/c/WINDOWS/system32/cmd.exe /c start "" "$1" >/dev/null 2>&1
+#
+# NOTE: we use PowerShell's Start-Process instead of `cmd.exe /c start`, because
+# cmd.exe re-parses its whole command line and treats unescaped `&` (and other
+# metacharacters like | ^ < >) as a command separator EVEN INSIDE QUOTES. OAuth
+# URLs contain multiple query params joined by `&` (client_id=...&redirect_uri=...),
+# so `cmd.exe /c start "" "$url"` silently truncated the URL at the first `&`,
+# breaking MCP OAuth flows (e.g. Atlassian) with an incomplete request.
+url=$1
+# Escape single quotes for the PowerShell single-quoted string literal below
+# (single-quoted strings are not re-parsed for & | etc., so this is safe).
+escaped=$(printf '%s' "$url" | sed "s/'/''/g")
+exec /mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -Command "Start-Process -FilePath '$escaped'" >/dev/null 2>&1
