@@ -1,5 +1,9 @@
 # Set the theme
+{{- if .is_work }}
+--theme="gruvbox-dark"
+{{- else }}
 --theme="gruvbox-material-hard-dark"
+{{- end }}
 
 # Use plain style
 --style="plain"
