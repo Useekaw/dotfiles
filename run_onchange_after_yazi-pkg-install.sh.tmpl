@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Installs/updates yazi plugins locked in package.toml.
+# package.toml hash: {{ include "dot_config/yazi/package.toml" | sha256sum }}
+
+set -euo pipefail
+
+if ! command -v ya >/dev/null 2>&1; then
+  echo "yazi (ya) not found; skipping plugin install. Run 'ya pkg install' manually once yazi is installed." >&2
+  exit 0
+fi
+
+ya pkg install

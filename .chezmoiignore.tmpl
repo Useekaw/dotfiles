@@ -14,6 +14,9 @@ styles
 .config/gtk-3.0/dank-colors.css
 .config/gtk-4.0/dank-colors.css
 
+# vendored yazi plugin code, deployed via `ya pkg install` from package.toml
+.config/yazi/plugins
+
 # ignore desktop specific configs on servers and inside WSL (no GUI/display server there)
 {{- if not .is_desktop }}
 .config/alacritty
@@ -22,6 +25,12 @@ styles
 .config/gtk-4.0
 .config/matugen
 .config/Code - OSS
+{{- end }}
+
+# yazi theme is generated locally by matugen (non-work desktop only), so only
+# manage a static theme.toml via chezmoi on the work machine
+{{- if not .is_work }}
+.config/yazi/theme.toml
 {{- end }}
 
 # wslview shim is only needed inside WSL (opens links via the Windows browser)
