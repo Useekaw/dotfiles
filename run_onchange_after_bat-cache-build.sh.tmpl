@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Rebuilds bat's binary cache so custom themes in ~/.config/bat/themes are
+# picked up. Triggered whenever a theme file changes.
+# themes hash: {{ range glob (joinPath .chezmoi.sourceDir "dot_config/bat/themes/*") }}{{ include . | sha256sum }}{{ end }}
+
+set -euo pipefail
+
+if ! command -v bat >/dev/null 2>&1; then
+  echo "bat not found; skipping cache build. Run 'bat cache --build' manually once bat is installed." >&2
+  exit 0
+fi
+
+bat cache --build
