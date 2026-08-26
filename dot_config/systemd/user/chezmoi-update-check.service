@@ -1,0 +1,6 @@
+[Unit]
+Description=Check for chezmoi source updates and diff
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/chezmoi-update-check
