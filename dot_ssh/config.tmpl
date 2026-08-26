@@ -10,8 +10,5 @@ Host *{{ if .is_work }} !github.com !github-privat{{ end }}
 {{- if .is_work }}
   IdentityFile ~/.ssh/id_ed25519
 {{- else }}
-  IdentityFile ~/.ssh/id_rsa
-
-Host ghost
   IdentityFile ~/.ssh/id_ed25519
 {{- end }}
