@@ -1,0 +1,25 @@
+{{- $domain := (include ".secrets/ssh_work_domain.age") | decrypt -}}
+{{- $user := (include ".secrets/ssh_work_user.age") | decrypt -}}
+Host ssh.dev.azure.com
+  User git
+  PreferredAuthentications publickey
+  PubkeyAuthentication yes
+  PasswordAuthentication no
+  KbdInteractiveAuthentication no
+  GSSAPIAuthentication no
+  IdentityFile ~/.ssh/id_rsa
+
+Host *.{{ $domain }}
+  User {{ $user }}
+  # Force password/keyboard-interactive and disable keys & GSSAPI
+  PreferredAuthentications password,keyboard-interactive
+  PubkeyAuthentication no
+  PasswordAuthentication yes
+  KbdInteractiveAuthentication yes
+  GSSAPIAuthentication no
+
+  # Optional quality-of-life settings
+  ServerAliveInterval 30
+  ServerAliveCountMax 6
+  StrictHostKeyChecking accept-new   # or "yes" in stricter envs
+  UserKnownHostsFile ~/.ssh/known_hosts
