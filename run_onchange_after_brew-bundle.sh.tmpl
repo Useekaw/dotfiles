@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Runs brew bundle whenever Brewfile changes.
+# Brewfile hash: {{ include "dot_brewfile.tmpl" | sha256sum }}
+
+set -euo pipefail
+
+if ! command -v brew >/dev/null 2>&1; then
+  echo "brew not found; skipping brew bundle." >&2
+  exit 0
+fi
+
+brew bundle --file="${HOME}/.brewfile" --verbose
