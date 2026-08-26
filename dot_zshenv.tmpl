@@ -25,3 +25,11 @@ export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 # open links via Windows default browser (needed e.g. for MCP/OAuth flows in WSL)
 export BROWSER=wslview
 {{- end }}
+{{- if not .is_work }}
+
+# route Claude Code through OpenRouter (personal machine only)
+export OPENROUTER_API_KEY="{{ (include ".secrets/openrouter_api_key.age") | decrypt }}"
+export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
+export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
+export ANTHROPIC_API_KEY=""
+{{- end }}
