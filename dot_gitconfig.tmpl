@@ -12,3 +12,8 @@
 
 [fetch]
   prune = true
+
+# repos whose remote uses the "github-privat" ssh host alias get the
+# personal identity, regardless of machine type (is_work)
+[includeIf "hasconfig:remote.*.url:git@github-privat:**/*"]
+  path = ~/.gitconfig-privat
