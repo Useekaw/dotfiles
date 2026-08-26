@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Dynamic Base16 DankShell",
+    "workbench.colorTheme": "Dynamic Base16 DankShell (Dark)",
     "workbench.startupEditor": "none",
     "window.menuBarVisibility": "compact",
     "colorize.enable_search_variables": false,
@@ -39,7 +39,7 @@
     "telemetry.feedback.enabled": false,
     "telemetry.editStats.enabled": false,
     "explorer.confirmDragAndDrop": false,
-    "workbench.iconTheme": "gruvbox-material-icons",
+    "workbench.iconTheme": "vscode-icons",
     "gruvbox-material-icons.folders.theme": "colorful",
     "taskfile": {
         "path": "/home/linuxbrew/.linuxbrew/bin/task"
@@ -114,5 +114,15 @@
     },
     "git.autofetch": true,
     "git.confirmSync": false,
-    "mise.checkForNewMiseVersion": false
+    "mise.checkForNewMiseVersion": false,
+    "editor.language.colorizedBracketPairs": [],
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.languageServer": "Pylance",
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.languageServerMode": "full",
+    "emmet.includeLanguages": {
+        "jinja-html": "html"
+    },
+    "vsicons.dontShowNewVersionMessage": true,
 }
