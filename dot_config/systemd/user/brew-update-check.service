@@ -1,0 +1,6 @@
+[Unit]
+Description=Check for Homebrew package updates
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/brew-update-check
