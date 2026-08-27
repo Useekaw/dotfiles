@@ -43,6 +43,12 @@ styles
 .local/bin/wslview
 {{- end }}
 
+# Hoth SPICE launcher (personal Proxmox VM) is only relevant on personal machines
+{{- if .is_work }}
+.local/bin/hoth_spice.sh
+.local/share/applications/hoth-rdp.desktop
+{{- end }}
+
 # Ignore generated (more or less) files in the .ssh directory
 .ssh/authorized_keys
 .ssh/known_hosts

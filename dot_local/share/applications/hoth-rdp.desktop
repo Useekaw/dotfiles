@@ -1,0 +1,6 @@
+# ~/.local/share/applications/hoth-rdp.desktop
+[Desktop Entry]
+Name=Hoth SPICE
+Exec=/home/usee/.local/bin/hoth_spice.sh
+Type=Application
+
