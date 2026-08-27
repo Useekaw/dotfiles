@@ -3,7 +3,7 @@
 {{ template "ssh_work_github.tmpl" . }}
 {{- end }}
 
-Host *{{ if .is_work }} !github.com !github-privat{{ end }}
+Host *{{ if .is_work }} !github-privat{{ end }}
   AddKeysToAgent yes
   PreferredAuthentications publickey
   IdentitiesOnly yes
