@@ -33,6 +33,11 @@ styles
 .config/yazi/theme.toml
 {{- end }}
 
+# VS Code (OSS) config is not needed on the work machine
+{{- if .is_work }}
+.config/Code - OSS
+{{- end }}
+
 # wslview shim is only needed inside WSL (opens links via the Windows browser)
 {{- if not .is_wsl }}
 .local/bin/wslview
