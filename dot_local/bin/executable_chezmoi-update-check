@@ -16,18 +16,17 @@ git fetch --quiet
 local_rev=$(git rev-parse @)
 remote_rev=$(git rev-parse '@{u}')
 
-if [ "$local_rev" = "$remote_rev" ]; then
-  rm -f "$status_file"
-  exit 0
+if [ "$local_rev" != "$remote_rev" ]; then
+  git pull --ff-only --quiet
 fi
 
-git pull --ff-only --quiet
-
+# Always check for diff, not just after a pull: destination state can drift
+# from an already-in-sync source too (manual edits never `chezmoi add`ed).
 diff_output=$(chezmoi diff || true)
 
 mkdir -p "$(dirname "$status_file")"
 if [ -n "$diff_output" ]; then
-  echo "↻ chezmoi: Update vorhanden" > "$status_file"
+  echo "↻ chezmoi: Diff vorhanden (chezmoi diff/apply prüfen)" > "$status_file"
 else
   rm -f "$status_file"
 fi
