@@ -2,6 +2,10 @@
 {{ template "ssh_work_hosts.tmpl" . }}
 {{ template "ssh_work_github.tmpl" . }}
 {{- end }}
+{{- if not .is_work -}}
+Host nas.faha.home
+  SetEnv TERM=xterm-256color
+{{- end }}
 
 Host *{{ if .is_work }} !github-privat{{ end }}
   AddKeysToAgent yes

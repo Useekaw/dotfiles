@@ -27,9 +27,11 @@ export BROWSER=wslview
 {{- end }}
 {{- if not .is_work }}
 
-# route Claude Code through OpenRouter (personal machine only)
-export OPENROUTER_API_KEY="{{ (include ".secrets/openrouter_api_key.age") | decrypt }}"
-export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
-export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
-export ANTHROPIC_API_KEY=""
+# route Claude Code through OpenRouter (personal machine only) — disabled 2026-09-30,
+# re-enable by uncommenting and restoring the decrypt call for OPENROUTER_API_KEY:
+# {{ "{{" }} (include ".secrets/openrouter_api_key.age") | decrypt {{ "}}" }}
+# export OPENROUTER_API_KEY="<decrypt from .secrets/openrouter_api_key.age>"
+# export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
+# export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
+# export ANTHROPIC_API_KEY=""
 {{- end }}
