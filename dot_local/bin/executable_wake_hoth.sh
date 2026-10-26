@@ -13,7 +13,20 @@ for i in {1..30}; do
     ssh -o BatchMode=yes $PROXMOX "sudo /usr/sbin/qm agent $VM_ID ping" &>/dev/null && break
     sleep 1
 done
-ssh -o BatchMode=yes $PROXMOX "sudo /usr/sbin/qm guest exec $VM_ID --timeout 15 -- C:\\\\Windows\\\\System32\\\\w32tm.exe /resync /force" &>/dev/null
+# w32tm /resync /force refuses large offsets (phase-correction check applies
+# even with /force); registry limit bumps don't help. Instead compute the
+# true offset via stripchart and set the clock directly (-EncodedCommand
+# avoids quoting across ssh -> qm guest exec -> Windows cmdline).
+#
+# Unencoded PowerShell (base64 below is this, UTF-16LE):
+#   $l = w32tm /stripchart /computer:0.at.pool.ntp.org /samples:1 /dataonly | Select-Object -Last 1
+#   $o = [double]::Parse((($l -split ",\s*")[1]).TrimEnd("s"), [Globalization.CultureInfo]::InvariantCulture)
+#   Set-Date ((Get-Date).ToUniversalTime().AddSeconds(-$o)).ToLocalTime()
+#   Restart-Service w32time
+#   Start-Sleep 5
+#   w32tm /resync /rediscover
+TIME_SYNC_B64="JABsACAAPQAgAHcAMwAyAHQAbQAgAC8AcwB0AHIAaQBwAGMAaABhAHIAdAAgAC8AYwBvAG0AcAB1AHQAZQByADoAMAAuAGEAdAAuAHAAbwBvAGwALgBuAHQAcAAuAG8AcgBnACAALwBzAGEAbQBwAGwAZQBzADoAMQAgAC8AZABhAHQAYQBvAG4AbAB5ACAAfAAgAFMAZQBsAGUAYwB0AC0ATwBiAGoAZQBjAHQAIAAtAEwAYQBzAHQAIAAxAAoAJABvACAAPQAgAFsAZABvAHUAYgBsAGUAXQA6ADoAUABhAHIAcwBlACgAKAAoACQAbAAgAC0AcwBwAGwAaQB0ACAAIgAsAFwAcwAqACIAKQBbADEAXQApAC4AVAByAGkAbQBFAG4AZAAoACIAcwAiACkALAAgAFsARwBsAG8AYgBhAGwAaQB6AGEAdABpAG8AbgAuAEMAdQBsAHQAdQByAGUASQBuAGYAbwBdADoAOgBJAG4AdgBhAHIAaQBhAG4AdABDAHUAbAB0AHUAcgBlACkACgBTAGUAdAAtAEQAYQB0AGUAIAAoACgARwBlAHQALQBEAGEAdABlACkALgBUAG8AVQBuAGkAdgBlAHIAcwBhAGwAVABpAG0AZQAoACkALgBBAGQAZABTAGUAYwBvAG4AZABzACgALQAkAG8AKQApAC4AVABvAEwAbwBjAGEAbABUAGkAbQBlACgAKQAKAFIAZQBzAHQAYQByAHQALQBTAGUAcgB2AGkAYwBlACAAdwAzADIAdABpAG0AZQAKAFMAdABhAHIAdAAtAFMAbABlAGUAcAAgADUACgB3ADMAMgB0AG0AIAAvAHIAZQBzAHkAbgBjACAALwByAGUAZABpAHMAYwBvAHYAZQByAAoA"
+ssh -o BatchMode=yes $PROXMOX "sudo /usr/sbin/qm guest exec $VM_ID --timeout 25 -- C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -NoProfile -NonInteractive -EncodedCommand $TIME_SYNC_B64" &>/dev/null
 
 for i in {1..60}; do
     (echo > /dev/tcp/$VM_IP/3389) &>/dev/null && exit 0
