@@ -9,8 +9,3 @@ input_path = "~/.config/matugen/templates/zellij.kdl"
 output_path = "~/.config/zellij/themes/matugen.kdl"
 post_hook = "~/.local/bin/zellij-ansi-sync.py"
 
-[templates.claude_code]
-input_path = "~/.config/matugen/templates/claude-code-theme.json"
-output_path = "~/.claude/themes/matugen.json"
-post_hook = "~/.local/bin/claude-code-theme-sync.py"
-

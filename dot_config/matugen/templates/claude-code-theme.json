@@ -1,7 +1,0 @@
-{
-    "name": "matugen",
-    "base": "dark-ansi",
-    "overrides": {
-        "selectionBg": "{{colors.primary_container.default.hex}}"
-    }
-}
