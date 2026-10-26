@@ -50,8 +50,15 @@ web_client {
     font "monospace"
 }
 
-// Choose the theme that is specified in the themes section.
+// Choose the theme that is specified in the themes section. "matugen" is
+// only rendered (and kept in sync) if the matugen binary is actually on
+// this machine - falls back to zellij's built-in gruvbox-dark otherwise,
+// since a missing theme file would break zellij outright.
+{{- if lookPath "matugen" }}
 theme "matugen"
+{{- else }}
+theme "gruvbox-dark"
+{{- end }}
 
 // Set the pane frame style when pane_frames is enabled
 pane_frame_style "full"
