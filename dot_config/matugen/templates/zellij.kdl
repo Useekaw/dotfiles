@@ -1,0 +1,156 @@
+// Material-You scheme has no native 16-color ANSI palette, so
+// terminal_colors / multiplayer_user_colors approximate it from
+// primary/secondary/tertiary/error + auto_lightness variants (see note
+// further down on a real dank16-based alternative that needs confirming
+// first). UI chrome (text/ribbon/table/list/frame/exit_code) just uses
+// matugen's Material roles directly, same pattern as the yazi template.
+
+themes {
+    matugen {
+        text_unselected {
+            base {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background {{colors.surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_0 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        text_selected {
+            base {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background {{colors.surface_variant.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_0 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        ribbon_selected {
+            base {{colors.on_primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_0 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.on_primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        ribbon_unselected {
+            base {{colors.on_surface_variant.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background {{colors.surface_variant.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_0 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        table_title {
+            base {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background 0
+            emphasis_0 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        table_cell_selected {
+            base {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background {{colors.surface_variant.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_0 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        table_cell_unselected {
+            base {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background {{colors.surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_0 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        list_selected {
+            base {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background {{colors.surface_variant.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_0 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        list_unselected {
+            base {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background {{colors.surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_0 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        frame_selected {
+            base {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background 0
+            emphasis_0 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 0
+        }
+        frame_highlight {
+            base {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background 0
+            emphasis_0 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        exit_code_success {
+            base {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background 0
+            emphasis_0 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 {{colors.surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_2 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_3 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+        exit_code_error {
+            base {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            background 0
+            emphasis_0 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        // DMS's embedded alacritty/kitty templates pull their ANSI colors from
+        // its own `dank16term.colorN` palette (confirmed via `strings` on
+        // /usr/bin/dms) instead of matugen's Material roles - that's the
+        // palette actually showing in your terminal right now. Not used here:
+        // it only renders inside DMS's own template run ("dank16 injection"),
+        // and whether that extends to run-user-templates (this file) is
+        // unverified from the CLI alone - a wrong guess would make matugen
+        // exit 1 on every theme regen. Falls back to the same Material-role
+        // approach as the rest of this file instead; ask if you want to
+        // confirm dank16term access by watching a real `dms matugen generate`
+        // run, then switch these two blocks over.
+        multiplayer_user_colors {
+            player_1 {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            player_2 {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            player_3 {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            player_4 {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            player_5 {{colors.primary.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            player_6 {{colors.secondary.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            player_7 {{colors.tertiary.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            player_8 {{colors.error.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            player_9 0
+            player_10 0
+        }
+        terminal_colors {
+            black {{colors.surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            red {{colors.error.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            green {{colors.tertiary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            yellow {{colors.tertiary_fixed.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            blue {{colors.primary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            magenta {{colors.secondary.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            cyan {{colors.primary_fixed.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            white {{colors.on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            bright_black {{colors.outline.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            bright_red {{colors.error.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            bright_green {{colors.tertiary.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            bright_yellow {{colors.tertiary_fixed.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            bright_blue {{colors.primary.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            bright_magenta {{colors.secondary.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            bright_cyan {{colors.primary_fixed.default.hex | auto_lightness: 25.0 | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+            bright_white {{colors.inverse_on_surface.default.hex | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ",", ""}}
+        }
+    }
+}

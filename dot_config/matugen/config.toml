@@ -4,3 +4,7 @@
 input_path = "~/.config/matugen/templates/yazi.toml"
 output_path = "~/.config/yazi/theme.toml"
 
+[templates.zellij]
+input_path = "~/.config/matugen/templates/zellij.kdl"
+output_path = "~/.config/zellij/themes/matugen.kdl"
+

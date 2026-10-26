@@ -51,7 +51,7 @@ web_client {
 }
 
 // Choose the theme that is specified in the themes section.
-theme "gruvbox-dark"
+theme "matugen"
 
 // Set the pane frame style when pane_frames is enabled
 pane_frame_style "full"
