@@ -14,7 +14,7 @@
 //
 // Ctrl+g: locked -> normal (manage panes/tabs/sessions)
 // Ctrl+g again (or after an action): back to locked
-default_mode "locked"
+default_mode "normal"
 
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
