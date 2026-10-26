@@ -9,3 +9,8 @@ input_path = "~/.config/matugen/templates/zellij.kdl"
 output_path = "~/.config/zellij/themes/matugen.kdl"
 post_hook = "~/.local/bin/zellij-ansi-sync.py"
 
+[templates.bat]
+input_path = "~/.config/matugen/templates/bat.tmtheme"
+output_path = "~/.config/bat/themes/matugen.tmtheme"
+post_hook = "~/.local/bin/bat-theme-hue-sync.py && bat cache --build"
+
