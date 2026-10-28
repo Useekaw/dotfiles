@@ -1,5 +1,5 @@
 #!/bin/bash
-PROXMOX="pve"
+PROXMOX="pve.faha.home"
 NODE="pve"
 VM_ID="10013"
 VV_FILE="/tmp/hoth_${VM_ID}.vv"
