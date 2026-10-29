@@ -1,0 +1,7 @@
+#!/bin/sh
+# Gibt den Authorization-Header für das MCP-Gateway als JSON aus (Claude Code headersHelper).
+# Token kommt aus ~/.config/mcp-gateway/token (per chezmoi, age-verschlüsselt verteilt).
+set -eu
+token_file="${MCP_GATEWAY_TOKEN_FILE:-$HOME/.config/mcp-gateway/token}"
+token=$(tr -d '\n' < "$token_file")
+printf '{"Authorization": "Bearer %s"}\n' "$token"
