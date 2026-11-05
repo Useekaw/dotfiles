@@ -1,8 +1,8 @@
 #!/bin/bash
 # Connects to the hoth VM via RDP with the FreeRDP SDL client.
-#   full:   one fullscreen window per active output (both dock monitors,
-#           or the laptop panel alone when undocked). Remmina and xfreerdp
-#           can't do this under niri: they draw all monitors into a single
+#   full:   docked, one fullscreen window per dock monitor; undocked,
+#           fullscreen on the laptop panel. Remmina and xfreerdp can't do
+#           multimon under niri: they draw all monitors into a single
 #           window, and niri never lets a window span outputs.
 #   window: one regular niri window; Windows follows its size live, but
 #           only has one monitor in this mode.
@@ -12,20 +12,31 @@
 MODE="${1:-full}"
 VM_IP="192.168.84.13"
 RDP_USER="fabian"
+# Matched by model, not connector: the MST dock renumbers DP-N on replug.
+DOCK_MODELS=("DELL S3220DGF" "DELL P2219H")
+
+docked() {
+    local outputs_json m
+    outputs_json=$(niri msg --json outputs) || return 1
+    for m in "${DOCK_MODELS[@]}"; do
+        jq -e --arg m "$m" 'any(.[]; .model == $m)' <<<"$outputs_json" >/dev/null || return 1
+    done
+}
 
 /home/usee/.local/bin/wake_hoth.sh || {
     notify-send "Hoth" "VM did not come up (RDP port closed)"
     exit 1
 }
 
-PASSWORD=$(secret-tool lookup service hoth-rdp user "$RDP_USER") || {
-    notify-send "Hoth" "No password in keyring, run: secret-tool store --label=\"hoth RDP\" service hoth-rdp user $RDP_USER"
+PASSWORD=$(secret-tool lookup service hoth-rdp user "$RDP_USER")
+if [ -z "$PASSWORD" ]; then
+    notify-send "Hoth" "Keyring locked or no password stored, set it with: secret-tool store --label=\"hoth RDP\" service hoth-rdp user $RDP_USER"
     exit 1
-}
+fi
 
 args=(/v:"$VM_IP" /u:"$RDP_USER" /p:"$PASSWORD" /gfx +clipboard /cert:tofu /title:hoth)
 case "$MODE" in
-    full) args+=(/multimon) ;;
+    full) if docked; then args+=(/multimon); else args+=(/f); fi ;;
     window) args+=(/dynamic-resolution) ;;
     *) echo "usage: $0 [full|window]" >&2; exit 2 ;;
 esac
