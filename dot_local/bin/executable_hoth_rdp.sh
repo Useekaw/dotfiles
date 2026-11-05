@@ -34,10 +34,12 @@ if [ -z "$PASSWORD" ]; then
     exit 1
 fi
 
-args=(/v:"$VM_IP" /u:"$RDP_USER" /p:"$PASSWORD" /gfx +clipboard /cert:tofu /title:hoth)
+args=(/v:"$VM_IP" /u:"$RDP_USER" /p:"$PASSWORD" /gfx +clipboard /cert:tofu)
 case "$MODE" in
-    full) if docked; then args+=(/multimon); else args+=(/f); fi ;;
-    window) args+=(/dynamic-resolution) ;;
+    full) args+=(/title:hoth); if docked; then args+=(/multimon); else args+=(/f); fi ;;
+    # Title matched by a niri window rule that tiles this mode only;
+    # applied to the multimon windows it breaks their fullscreen layout.
+    window) args+=(/title:hoth-window /dynamic-resolution) ;;
     *) echo "usage: $0 [full|window]" >&2; exit 2 ;;
 esac
 
