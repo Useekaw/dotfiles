@@ -1,0 +1,6 @@
+# ~/.local/share/applications/hoth-rdp-window.desktop
+[Desktop Entry]
+Name=Hoth (Fenster)
+Comment=Windows VM via RDP in a resizable window
+Exec=/home/usee/.local/bin/hoth_rdp.sh window
+Type=Application
