@@ -34,7 +34,9 @@ if [ -z "$PASSWORD" ]; then
     exit 1
 fi
 
-args=(/v:"$VM_IP" /u:"$RDP_USER" /p:"$PASSWORD" /gfx +clipboard /cert:tofu)
+# No KDC for hoth: Kerberos only fails before NTLM takes over.
+args=(/v:"$VM_IP" /u:"$RDP_USER" /p:"$PASSWORD" /gfx +clipboard /cert:tofu
+    /auth-pkg-list:!kerberos,!u2u)
 case "$MODE" in
     full) args+=(/title:hoth); if docked; then args+=(/multimon); else args+=(/f); fi ;;
     # Title matched by a niri window rule that tiles this mode only;

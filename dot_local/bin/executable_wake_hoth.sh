@@ -4,6 +4,10 @@ VM_IP="192.168.84.13"
 VM_ID="10013"
 USER="usee"
 
+# RDP port open means the VM is running and its clock was already synced
+# by the wake that resumed it; skip the ~3s of ssh round trips.
+timeout 1 bash -c "echo > /dev/tcp/$VM_IP/3389" &>/dev/null && exit 0
+
 ssh -o BatchMode=yes $PROXMOX "sudo /usr/sbin/qm status $VM_ID | grep -q 'stopped' && sudo /usr/sbin/qm resume $VM_ID"
 
 # VM clock drifts while suspended/paused, Windows fires no reliable resume event.
