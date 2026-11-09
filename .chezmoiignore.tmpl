@@ -25,6 +25,9 @@ styles
 .config/gtk-4.0
 .config/matugen
 .config/Code - OSS
+.config/freerdp
+.local/share/applications
+.local/bin/bat-theme-hue-sync.py
 {{- end }}
 
 # yazi theme is generated locally by matugen (non-work desktop only), so only
@@ -36,6 +39,7 @@ styles
 # VS Code (OSS) config is not needed on the work machine
 {{- if .is_work }}
 .config/Code - OSS
+.config/freerdp
 {{- end }}
 
 # wslview shim is only needed inside WSL (opens links via the Windows browser)
@@ -47,7 +51,11 @@ styles
 {{- if .is_work }}
 .local/bin/hoth_spice.sh
 .local/bin/wake_hoth.sh
-.local/share/applications/hoth-rdp.desktop
+.config/freerdph
+.config/freerdp.local/share/applications/hoth-rdp.desktop
+.local/bin/zellij-ansi-sync.py
+.local/bin/mcp-gateway-headers
+.local/bin/hoth_rdp.sh
 {{- end }}
 
 # Ignore generated (more or less) files in the .ssh directory
