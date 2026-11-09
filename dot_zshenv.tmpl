@@ -22,6 +22,20 @@ ssh-add "${HOME}/.ssh/id_ed25519" > /dev/null 2>&1
 export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 {{- if .is_wsl }}
 
+# jk (Jenkins CLI): stateless read-only auth; values are age-encrypted in the repo
+{{ `-----BEGIN AGE ENCRYPTED FILE-----
+YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCdjhxLzhoNERMS29iRkdX
+MVU0Tkl0S1ZaM2xXUk4xMmdvTWwxVzNZUFhNCklnVEc1UlI0OTVPbHFNcCtBMldx
+Q1hUcFZlbnBOWkVwN0RIN0d3MitCSkkKLS0tIElPcGNjN3QvVS9jaW55RXIrUVJn
+QTBxSDZ1RktFbVQ0M1d3UC9hK0Y3a2cKtlL9YJxNyDGkGUBkF/ECVEri3i6IMojO
+FSQw08u3r1GdCdJIxFkJ6YmixbPDLCYyeHF05fjMqKjqnrk/LsU5iYNqm0M4IZdZ
+Gfvcu1blZ5STCT1CL1o0d6YHi4pstYboUYddcZguQLx74fCgYwGc24AL8YZZZuC1
+fMxz1vcsWWlBUgxdf5uA4XygvO+eHjFJL8OKcoS+u1a45MuVFixnfAC93EJ26WO2
+X5omFDirWiZWfCjM+A3TyoVnxn068VD6fhfZQO9pSi6Vw4kqxRoz6f+l2vpe5DyU
+sESoSBNm2u0=
+-----END AGE ENCRYPTED FILE-----
+` | decrypt }}
+
 # open links via Windows default browser (needed e.g. for MCP/OAuth flows in WSL)
 export BROWSER=wslview
 {{- end }}
