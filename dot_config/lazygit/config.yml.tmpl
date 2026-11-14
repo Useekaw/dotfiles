@@ -1,0 +1,13 @@
+gui:
+  nerdFontsVersion: 3
+git:
+  diffRenderers:
+    # colorScheme is lazygit's own placeholder (dark/light from the terminal
+    # query), escaped so chezmoi leaves it alone. Syntax theme mirrors
+    # bat/config.tmpl: delta reads bat's theme cache, matugen.tmtheme only
+    # exists on non-work desktops.
+{{- if and .is_desktop (not .is_work) }}
+    - command: delta --{{ "{{colorScheme}}" }} --paging=never --syntax-theme=matugen
+{{- else }}
+    - command: delta --{{ "{{colorScheme}}" }} --paging=never --syntax-theme=gruvbox-dark
+{{- end }}
