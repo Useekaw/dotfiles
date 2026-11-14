@@ -29,8 +29,6 @@ brew "go-task"
 tap "smarzban/tap"
 brew "smarzban/tap/tsk"
 
-cask "claude-code"
-
 {{- if .is_work }}
 brew "awscli"
 brew "azure-cli"
@@ -40,6 +38,7 @@ cask "copilot-cli"
 {{- else }}
 tap "hougesen/tap"
 brew "hougesen/tap/kdlfmt"
+cask "claude-code"
 {{- end }}
 
 
