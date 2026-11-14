@@ -3,4 +3,5 @@ eval "$(fzf --zsh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
+eval "$(zoxide init zsh)"
 
