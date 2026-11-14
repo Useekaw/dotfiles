@@ -27,7 +27,7 @@ brew "zellij"
 brew "go-task"
 
 tap "smarzban/tap"
-brew "smarzban/tap/tsk"
+brew "smarzban/tap/tsk", trusted: true
 
 {{- if .is_work }}
 brew "awscli"
@@ -37,7 +37,7 @@ brew "pipx"
 cask "copilot-cli"
 {{- else }}
 tap "hougesen/tap"
-brew "hougesen/tap/kdlfmt"
+brew "hougesen/tap/kdlfmt", trusted: true
 cask "claude-code"
 {{- end }}
 
