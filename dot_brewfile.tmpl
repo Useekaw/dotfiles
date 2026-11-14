@@ -7,6 +7,7 @@ brew "fzf"
 brew "gcc"
 brew "glow"
 brew "hadolint"
+brew "herdr"
 brew "jq"
 brew "lazygit"
 brew "mise"
@@ -18,18 +19,23 @@ brew "ripgrep"
 brew "shellcheck"
 brew "sops"
 brew "tree-sitter-cli"
+brew "uv"
 brew "yamllint"
 brew "yazi"
 brew "zellij"
 
 brew "go-task"
 
+tap "smarzban/tap"
+brew "smarzban/tap/tsk"
+
+cask "claude-code"
+
 {{- if .is_work }}
 brew "awscli"
 brew "azure-cli"
 brew "gh"
 brew "pipx"
-brew "uv"
 cask "copilot-cli"
 {{- else }}
 tap "hougesen/tap"
