@@ -9,4 +9,11 @@ if ! command -v brew >/dev/null 2>&1; then
   exit 0
 fi
 
+# Homebrew refuses to load formulae from non-official taps until they are
+# trusted; trust only the single formulae the Brewfile pulls from them
+brew trust --formula smarzban/tap/tsk
+{{- if not .is_work }}
+brew trust --formula hougesen/tap/kdlfmt
+{{- end }}
+
 brew bundle --file="${HOME}/.brewfile" --verbose
