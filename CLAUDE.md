@@ -1,6 +1,6 @@
-# CLAUDE.md
+# Agent guide
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI coding agents working in this repository. `AGENTS.md` is a symlink to `CLAUDE.md`; edit `CLAUDE.md`.
 
 ## What this is
 
@@ -79,4 +79,5 @@ On personal desktops, matugen (driven by DankMaterialShell) generates themes fro
 ## Conventions
 
 - Conventional Commits with a scope naming the tool, e.g. `fix(brew): ...`, `feat(zellij): ...`.
+- No `Co-Authored-By` (or other agent attribution) trailers in commit messages.
 - Comments explain *why* a setting exists (often the bug it works around); keep that style.
