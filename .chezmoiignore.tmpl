@@ -58,6 +58,13 @@ styles
 .local/bin/hoth_rdp.sh
 {{- end }}
 
+# Claude Code agents/skills for the homelab (Obsidian vault via MCP gateway) are not needed on the work machine
+{{- if .is_work }}
+.claude/agents/librarian.md
+.claude/skills/init-vault
+.claude/skills/quick
+{{- end }}
+
 # Ignore generated (more or less) files in the .ssh directory
 .ssh/authorized_keys
 .ssh/known_hosts
