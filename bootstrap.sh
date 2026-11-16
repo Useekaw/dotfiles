@@ -39,7 +39,7 @@ main() {
 
   # prevent future creation of xdg directories
   sudo sed -i 's/enabled=True/enabled=False/' /etc/xdg/user-dirs.conf
-  rmdir ~/Bilder ~/Dokumente ~/Musik ~/Öffentlich ~/Schreibtisch ~/Videos ~/Vorlagen ~/Downloads
+  # rmdir ~/Bilder ~/Dokumente ~/Musik ~/Öffentlich ~/Schreibtisch ~/Videos ~/Vorlagen ~/Downloads
   mkdir  ~/downloads
 
   # install homebrew
