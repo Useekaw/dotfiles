@@ -35,7 +35,7 @@ Source names encode target attributes: `dot_` → `.`, `private_` → mode 0700/
 `.chezmoi.toml.tmpl` defines three booleans used everywhere in templates:
 
 - `is_work` – prompted once; selects work vs. personal git identity, SSH keys/hosts, Brewfile extras, age recipient.
-- `is_desktop` – prompted once, forced `false` inside WSL; gates GUI configs (alacritty, gtk, matugen, VS Code, freerdp, `.desktop` files).
+- `is_desktop` – prompted once, forced `false` inside WSL; gates GUI configs (alacritty, ghostty, gtk, matugen, VS Code, freerdp, `.desktop` files).
 - `is_wsl` – detected from kernel release; enables `wslview` shim and WSL-only env.
 
 Per-profile file exclusion lives in `.chezmoiignore.tmpl` (paths there are **target** paths, e.g. `.config/foo`, not `dot_config/foo`). Any new file that should not land on every machine needs an entry there.
